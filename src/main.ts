@@ -21,7 +21,12 @@ async function bootstrap() {
   /*Finally, configure nunjucks, setting views and express
   declared above*/
   nunjucks.configure(views, { express });
+  // adding other views
+  const staticAssets = join(__dirname, '..', 'static');
+  app.useStaticAssets(staticAssets);
   //start the application
   await app.listen(3000);
+  
 }
+
 bootstrap();
