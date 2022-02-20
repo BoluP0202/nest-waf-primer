@@ -1,5 +1,5 @@
-
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Student } from "src/student-registration/students/entities/student.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
@@ -20,4 +20,9 @@ export class User {
         address: string
     @Column({ default: true })
         isActive: boolean;
+
+    @JoinColumn()
+    @OneToOne(type => Student,
+    student => student.user)
+    student: Student;
 }   
